@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  postgres:
+    container_name: postgres-guild-manager-db
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    # it can be deleted
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=db_pass
+      - POSTGRES_DB=guild-manager-db
