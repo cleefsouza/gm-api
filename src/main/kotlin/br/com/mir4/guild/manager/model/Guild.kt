@@ -6,6 +6,5 @@ data class Guild(
     val id: UUID,
     val name: String,
     val countMembers: Int = 0,
-    val leader: Member,
-    val elders: List<Member>? = null
+    val deleted: Boolean = false
 )

@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/guild-manager-db
+    username: db_user
+    password: db_pass
+    driver-class-name: org.postgresql.Driver
+
+jdbc:
+  url: jdbc:postgresql://localhost:5432/guild-manager-db
+  username: db_user
+  password: db_pass
+
+jooq:
+  datasources:
+    default:
+      sql-dialect: 'POSTGRES'
