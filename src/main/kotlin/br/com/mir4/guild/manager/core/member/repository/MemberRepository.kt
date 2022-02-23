@@ -1,11 +1,11 @@
 package br.com.mir4.guild.manager.core.member.repository
 
+import br.com.mir4.guild.manager.core._class.converter._ClassConverter
 import br.com.mir4.guild.manager.core.config.ConverterUtils
 import br.com.mir4.guild.manager.core.config.DateService
 import br.com.mir4.guild.manager.core.guild.converter.GuildConverter
-import br.com.mir4.guild.manager.core.member.converter.HierarchyConverter
+import br.com.mir4.guild.manager.core.hierarchy.converter.HierarchyConverter
 import br.com.mir4.guild.manager.core.member.converter.MemberConverter
-import br.com.mir4.guild.manager.core.member.converter._ClassConverter
 import br.com.mir4.guild.manager.model.jooq.gm_schema.tables.Guild.GUILD
 import br.com.mir4.guild.manager.model.jooq.gm_schema.tables.Hierarchy.HIERARCHY
 import br.com.mir4.guild.manager.model.jooq.gm_schema.tables.Member.MEMBER
@@ -39,6 +39,7 @@ class MemberRepository(
         .join(_CLASS)
         .on(_CLASS.ID.eq(MEMBER.CLASS_ID))
         .where(MEMBER.ID.eq(memberId), MEMBER.GUILD_ID.eq(guildId), MEMBER.DELETED.isFalse)
+        .orderBy(MEMBER.LEVEL)
         .fetchOne(this::toModel)
 
     fun findAllByGuildId(guildId: UUID): List<Member> = dsl
@@ -51,10 +52,12 @@ class MemberRepository(
         .join(_CLASS)
         .on(_CLASS.ID.eq(MEMBER.CLASS_ID))
         .where(MEMBER.GUILD_ID.eq(guildId), MEMBER.DELETED.isFalse)
+        .orderBy(MEMBER.LEVEL.desc())
         .fetch(this::toModel)
 
     fun save(member: Member) = dsl
         .insertInto(MEMBER)
+        .set(MEMBER.ID, member.id)
         .set(MEMBER.NAME, member.name)
         .set(MEMBER.POWER, member.power)
         .set(MEMBER.LEVEL, member.level)
@@ -72,6 +75,7 @@ class MemberRepository(
         .set(MEMBER.HIERARCHY_ID, member.hierarchy?.id)
         .set(MEMBER.CLASS_ID, member._class?.id)
         .set(MEMBER.UPDATED_AT, dateService.nowODT())
+        .where(MEMBER.ID.eq(member.id), MEMBER.GUILD_ID.eq(member.guild?.id))
         .execute()
 
     fun delete(memberId: UUID) = dsl

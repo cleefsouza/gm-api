@@ -1,4 +1,4 @@
-package br.com.mir4.guild.manager.core.member.converter
+package br.com.mir4.guild.manager.core._class.converter
 
 import br.com.mir4.guild.manager.model._class._Class
 import br.com.mir4.guild.manager.model.jooq.gm_schema.tables.records._ClassRecord

@@ -1,4 +1,4 @@
-package br.com.mir4.guild.manager.core.member.converter
+package br.com.mir4.guild.manager.core.hierarchy.converter
 
 import br.com.mir4.guild.manager.model.hierarchy.Hierarchy
 import br.com.mir4.guild.manager.model.jooq.gm_schema.tables.records.HierarchyRecord
