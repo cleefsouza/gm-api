@@ -17,7 +17,7 @@ VALUES ('37f9f16e-4128-47d4-9b45-f27b16bdff51', 'Arbalist'),
 -- guild seeds
 
 INSERT INTO gm_schema.guild
-VALUES ('fb489b09-bf0a-4c11-8a9a-da2d79402592', 'Ðragon Blood', 50);
+VALUES ('fb489b09-bf0a-4c11-8a9a-da2d79402592', 'Ðragon Blood', 48, 50);
 
 -- member seeds
 

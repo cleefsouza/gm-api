@@ -24,6 +24,7 @@ CREATE TABLE gm_schema.guild
 (
     id            UUID PRIMARY KEY NOT NULL,
     name          VARCHAR(255)     NOT NULL,
+    level         INT              NOT NULL DEFAULT 1,
     count_members INT              NOT NULL DEFAULT 0,
     deleted       BOOLEAN          NOT NULL DEFAULT FALSE
 );

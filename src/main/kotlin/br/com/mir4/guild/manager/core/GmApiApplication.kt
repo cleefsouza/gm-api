@@ -1,4 +1,4 @@
-package br.com.mir4.guild.manager
+package br.com.mir4.guild.manager.core
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

@@ -1,6 +1,6 @@
-package br.com.mir4.guild.manager.converter
+package br.com.mir4.guild.manager.core.guild.converter
 
-import br.com.mir4.guild.manager.model.Guild
+import br.com.mir4.guild.manager.model.guild.Guild
 import br.com.mir4.guild.manager.model.jooq.gm_schema.tables.records.GuildRecord
 import org.jooq.Record
 import org.springframework.core.convert.converter.Converter
@@ -16,6 +16,7 @@ class GuildConverter : Converter<Record, Guild> {
             Guild(
                 id = it,
                 name = guildRecord.name,
+                level = guildRecord.level,
                 countMembers = guildRecord.countMembers,
                 deleted = guildRecord.deleted
             )

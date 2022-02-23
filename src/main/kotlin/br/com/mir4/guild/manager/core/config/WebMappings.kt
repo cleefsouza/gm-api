@@ -1,4 +1,4 @@
-package br.com.mir4.guild.manager.base
+package br.com.mir4.guild.manager.core.config
 
 class WebMappings {
     companion object {

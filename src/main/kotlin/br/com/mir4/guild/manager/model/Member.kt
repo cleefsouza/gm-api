@@ -1,5 +1,6 @@
 package br.com.mir4.guild.manager.model
 
+import br.com.mir4.guild.manager.model.guild.Guild
 import java.util.UUID
 
 data class Member(
