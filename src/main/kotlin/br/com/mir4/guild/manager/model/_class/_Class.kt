@@ -1,4 +1,4 @@
-package br.com.mir4.guild.manager.model
+package br.com.mir4.guild.manager.model._class
 
 import java.util.UUID
 

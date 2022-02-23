@@ -4,16 +4,20 @@ SET ROLE "guild-manager";
 
 CREATE TABLE gm_schema.hierarchy
 (
-    id   UUID PRIMARY KEY NOT NULL,
-    name VARCHAR(255)     NOT NULL
+    id         UUID PRIMARY KEY         NOT NULL,
+    name       VARCHAR(255)             NOT NULL,
+    created_at timestamp with time zone NOT NULL default now(),
+    updated_at timestamp with time zone NOT NULL default now()
 );
 
 -- class table
 
 CREATE TABLE gm_schema._class
 (
-    id   UUID PRIMARY KEY NOT NULL,
-    name VARCHAR(255)     NOT NULL
+    id         UUID PRIMARY KEY         NOT NULL,
+    name       VARCHAR(255)             NOT NULL,
+    created_at timestamp with time zone NOT NULL default now(),
+    updated_at timestamp with time zone NOT NULL default now()
 );
 
 COMMENT ON TABLE gm_schema._class IS 'Use of underscore due to the word "class" being reserved by the kotlin language';
@@ -22,25 +26,29 @@ COMMENT ON TABLE gm_schema._class IS 'Use of underscore due to the word "class" 
 
 CREATE TABLE gm_schema.guild
 (
-    id            UUID PRIMARY KEY NOT NULL,
-    name          VARCHAR(255)     NOT NULL,
-    level         INT              NOT NULL DEFAULT 1,
-    count_members INT              NOT NULL DEFAULT 0,
-    deleted       BOOLEAN          NOT NULL DEFAULT FALSE
+    id            UUID PRIMARY KEY         NOT NULL,
+    name          VARCHAR(255)             NOT NULL,
+    level         INT                      NOT NULL DEFAULT 1,
+    count_members INT                      NOT NULL DEFAULT 0,
+    created_at    timestamp with time zone NOT NULL default now(),
+    updated_at    timestamp with time zone NOT NULL default now(),
+    deleted       BOOLEAN                  NOT NULL DEFAULT FALSE
 );
 
 -- member table
 
 CREATE TABLE gm_schema.member
 (
-    id           UUID PRIMARY KEY NOT NULL,
-    name         VARCHAR(255)     NOT NULL,
-    power        DOUBLE PRECISION NOT NULL,
-    level        INT              NOT NULL,
-    guild_id     UUID             NOT NULL,
-    class_id     UUID             NOT NULL,
-    hierarchy_id UUID             NOT NULL,
-    deleted      BOOLEAN          NOT NULL DEFAULT FALSE
+    id           UUID PRIMARY KEY         NOT NULL,
+    name         VARCHAR(255)             NOT NULL,
+    power        DOUBLE PRECISION         NOT NULL,
+    level        INT                      NOT NULL,
+    guild_id     UUID                     NOT NULL,
+    class_id     UUID                     NOT NULL,
+    hierarchy_id UUID                     NOT NULL,
+    created_at   timestamp with time zone NOT NULL default now(),
+    updated_at   timestamp with time zone NOT NULL default now(),
+    deleted      BOOLEAN                  NOT NULL DEFAULT FALSE
 );
 
 ALTER TABLE gm_schema.member

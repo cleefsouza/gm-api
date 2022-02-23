@@ -53,7 +53,7 @@ class GuildService(private val guildRepository: GuildRepository) {
         countMembers = guildRequest.countMembers
     )
 
-    private fun validateFields(guildRequest: GuildRequest) {
+    private fun validateFields(guildRequest: GuildRequest?) {
         try {
             guildRequest?.let {
                 with(it) {

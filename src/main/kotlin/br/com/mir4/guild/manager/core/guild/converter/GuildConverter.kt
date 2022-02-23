@@ -18,6 +18,8 @@ class GuildConverter : Converter<Record, Guild> {
                 name = guildRecord.name,
                 level = guildRecord.level,
                 countMembers = guildRecord.countMembers,
+                createdAt = guildRecord.createdAt,
+                updatedAt = guildRecord.updatedAt,
                 deleted = guildRecord.deleted
             )
         }
