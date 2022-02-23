@@ -30,6 +30,7 @@ CREATE TABLE gm_schema.guild
     name          VARCHAR(255)             NOT NULL,
     level         INT                      NOT NULL DEFAULT 1,
     count_members INT                      NOT NULL DEFAULT 0,
+    server        VARCHAR(255)             NOT NULL,
     created_at    timestamp with time zone NOT NULL default now(),
     updated_at    timestamp with time zone NOT NULL default now(),
     deleted       BOOLEAN                  NOT NULL DEFAULT FALSE

@@ -8,6 +8,7 @@ data class Guild(
     val name: String,
     val level: Int = 1,
     val countMembers: Int = 0,
+    val server: String,
     val createdAt: OffsetDateTime = OffsetDateTime.now(),
     val updatedAt: OffsetDateTime = OffsetDateTime.now(),
     val deleted: Boolean = false

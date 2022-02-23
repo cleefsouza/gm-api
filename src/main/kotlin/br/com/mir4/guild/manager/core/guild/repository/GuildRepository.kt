@@ -28,6 +28,7 @@ class GuildRepository(
         .set(GUILD.ID, guild.id)
         .set(GUILD.NAME, guild.name)
         .set(GUILD.LEVEL, guild.level)
+        .set(GUILD.SERVER, guild.server)
         .set(GUILD.COUNT_MEMBERS, guild.countMembers)
         .execute()
 
@@ -35,6 +36,7 @@ class GuildRepository(
         .update(GUILD)
         .set(GUILD.NAME, guild.name)
         .set(GUILD.COUNT_MEMBERS, guild.countMembers)
+        .set(GUILD.SERVER, guild.server)
         .set(GUILD.UPDATED_AT, dateService.nowODT())
         .where(GUILD.ID.eq(guild.id), GUILD.DELETED.isFalse)
         .execute()

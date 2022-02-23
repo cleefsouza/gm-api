@@ -50,6 +50,7 @@ class GuildService(private val guildRepository: GuildRepository) {
         id = guildId ?: UUID.randomUUID(),
         name = guildRequest.name,
         level = guildRequest.level,
+        server = guildRequest.server,
         countMembers = guildRequest.countMembers
     )
 
@@ -58,6 +59,7 @@ class GuildService(private val guildRepository: GuildRepository) {
             guildRequest?.let {
                 with(it) {
                     require(name.isNotEmpty()) { "Name cannot be empty" }
+                    require(server.isNotEmpty()) { "Server cannot be empty" }
                     require(level >= 1) { "Level cannot be lower than 1" }
                     require(countMembers >= 0) { "Count members cannot be lower than 0" }
                 }
