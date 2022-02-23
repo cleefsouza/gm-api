@@ -6,10 +6,10 @@ import br.com.mir4.guild.manager.core.guild.converter.GuildConverter
 import br.com.mir4.guild.manager.core.member.converter.HierarchyConverter
 import br.com.mir4.guild.manager.core.member.converter.MemberConverter
 import br.com.mir4.guild.manager.core.member.converter._ClassConverter
-import br.com.mir4.guild.manager.model.jooq.gm_schema.tables.Guild.*
+import br.com.mir4.guild.manager.model.jooq.gm_schema.tables.Guild.GUILD
 import br.com.mir4.guild.manager.model.jooq.gm_schema.tables.Hierarchy.HIERARCHY
 import br.com.mir4.guild.manager.model.jooq.gm_schema.tables.Member.MEMBER
-import br.com.mir4.guild.manager.model.jooq.gm_schema.tables._Class.*
+import br.com.mir4.guild.manager.model.jooq.gm_schema.tables._Class._CLASS
 import br.com.mir4.guild.manager.model.member.Member
 import org.jooq.DSLContext
 import org.jooq.Record
@@ -32,20 +32,20 @@ class MemberRepository(
     fun findByIdAndGuildId(memberId: UUID, guildId: UUID): Member? = dsl
         .select()
         .from(MEMBER)
+        .join(GUILD)
+        .on(GUILD.ID.eq(MEMBER.GUILD_ID))
         .join(HIERARCHY)
         .on(HIERARCHY.ID.eq(MEMBER.HIERARCHY_ID))
         .join(_CLASS)
         .on(_CLASS.ID.eq(MEMBER.CLASS_ID))
-        .where(
-            MEMBER.ID.eq(memberId),
-            MEMBER.GUILD_ID.eq(guildId),
-            MEMBER.DELETED.isFalse
-        )
+        .where(MEMBER.ID.eq(memberId), MEMBER.GUILD_ID.eq(guildId), MEMBER.DELETED.isFalse)
         .fetchOne(this::toModel)
 
     fun findAllByGuildId(guildId: UUID): List<Member> = dsl
         .select()
         .from(MEMBER)
+        .join(GUILD)
+        .on(GUILD.ID.eq(MEMBER.GUILD_ID))
         .join(HIERARCHY)
         .on(HIERARCHY.ID.eq(MEMBER.HIERARCHY_ID))
         .join(_CLASS)
