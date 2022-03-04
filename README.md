@@ -4,10 +4,15 @@
 
 ### Technologies
 - Kotlin
-- Spring
+- Spring Boot
+- Spring Security
+- JWT
+- Docker
+- Jooq Generates
 
 ### Running
 - Clone this project `git clone git@github.com:cleefsouza/gm-api.git`
+- Run command in **src/main/resources** folder `docker-compose up --build`
 - Run main method in `GmApiApplication.kt`
 
 ### Developer <div id="autor"></div>
