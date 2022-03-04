@@ -1,6 +1,6 @@
 package br.com.mir4.guild.manager.core.member.controller
 
-import br.com.mir4.guild.manager.core.config.WebMappings
+import br.com.mir4.guild.manager.core.config.utils.WebMappings
 import br.com.mir4.guild.manager.core.member.service.MemberService
 import br.com.mir4.guild.manager.model.member.request.MemberRequest
 import org.springframework.http.HttpStatus

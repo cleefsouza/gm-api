@@ -1,4 +1,4 @@
-package br.com.mir4.guild.manager.core.config
+package br.com.mir4.guild.manager.core.config.utils
 
 import org.springframework.stereotype.Service
 import java.time.Instant

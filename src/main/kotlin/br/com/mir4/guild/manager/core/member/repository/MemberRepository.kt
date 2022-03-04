@@ -1,8 +1,8 @@
 package br.com.mir4.guild.manager.core.member.repository
 
 import br.com.mir4.guild.manager.core._class.converter._ClassConverter
-import br.com.mir4.guild.manager.core.config.ConverterUtils
-import br.com.mir4.guild.manager.core.config.DateService
+import br.com.mir4.guild.manager.core.config.utils.ConverterUtil
+import br.com.mir4.guild.manager.core.config.utils.DateService
 import br.com.mir4.guild.manager.core.guild.converter.GuildConverter
 import br.com.mir4.guild.manager.core.hierarchy.converter.HierarchyConverter
 import br.com.mir4.guild.manager.core.member.converter.MemberConverter
@@ -24,7 +24,7 @@ class MemberRepository(
     private val guildConverter: GuildConverter,
     private val _classConverter: _ClassConverter,
     private val hierarchyConverter: HierarchyConverter,
-    private val converterUtils: ConverterUtils
+    private val converterUtil: ConverterUtil
 ) {
     fun isExists(memberId: UUID, guildId: UUID): Boolean =
         dsl.fetchExists(MEMBER, MEMBER.ID.eq(memberId), MEMBER.GUILD_ID.eq(guildId), MEMBER.DELETED.isFalse)
@@ -88,9 +88,9 @@ class MemberRepository(
     private fun toModel(record: Record): Member? {
         val member = converter.convert(record)
 
-        val guild = converterUtils.safeConvert(guildConverter, record)
-        val hierarchy = converterUtils.safeConvert(hierarchyConverter, record)
-        val _class = converterUtils.safeConvert(_classConverter, record)
+        val guild = converterUtil.safeConvert(guildConverter, record)
+        val hierarchy = converterUtil.safeConvert(hierarchyConverter, record)
+        val _class = converterUtil.safeConvert(_classConverter, record)
 
         member?.let {
             it.guild = guild

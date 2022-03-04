@@ -1,6 +1,6 @@
 package br.com.mir4.guild.manager.core.guild.repository
 
-import br.com.mir4.guild.manager.core.config.DateService
+import br.com.mir4.guild.manager.core.config.utils.DateService
 import br.com.mir4.guild.manager.core.guild.converter.GuildConverter
 import br.com.mir4.guild.manager.model.guild.Guild
 import br.com.mir4.guild.manager.model.jooq.gm_schema.tables.Guild.GUILD

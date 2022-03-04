@@ -1,4 +1,4 @@
-package br.com.mir4.guild.manager.core.config
+package br.com.mir4.guild.manager.core.config.error
 
 import org.springframework.http.HttpHeaders
 import org.springframework.http.ResponseEntity
