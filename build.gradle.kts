@@ -3,6 +3,7 @@ import org.jooq.meta.jaxb.Property
 
 val springBootVersion: String by project
 val jooqVersion: String by project
+val jwtVersion: String by project
 
 plugins {
     id("org.springframework.boot") version "2.6.3"
@@ -23,13 +24,15 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
     implementation("org.springframework.boot:spring-boot-starter-jooq:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-
-    jooqGenerator("org.jooq:jooq-meta-extensions:$jooqVersion")
+    implementation("io.jsonwebtoken:jjwt:$jwtVersion")
 
     runtimeOnly("org.postgresql:postgresql")
+
+    jooqGenerator("org.jooq:jooq-meta-extensions:$jooqVersion")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

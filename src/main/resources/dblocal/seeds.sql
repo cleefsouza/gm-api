@@ -1,3 +1,9 @@
+-- login seeds
+
+INSERT INTO gm_schema.login
+VALUES ('d343d88b-b632-422e-84b4-d680dd867503', 'xpepeta',
+        '$2a$10$irVIP3cqP2OnD0AlGKu4B.YQYgdo6sZ2l.5cZdGhyJi5RHSzFEf1m');
+
 -- hierarchy seeds
 
 INSERT INTO gm_schema.hierarchy
